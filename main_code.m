@@ -49,6 +49,7 @@ for i = 1:pieces
     tspan = [t(i) t(i+1)];
     xBtilde = pinv(B)*(xtg - xpoint(:,i));
     u(:,i) = (1/delta)*xBtilde;             % Control applied over tspan
+    
     % Solving system dynamics in sys_eg for the control above, over tspan.
     [t_hor,x] = ode45(@(t,x) sys_eg(t,x,u(:,i)), tspan, xpoint(:,i));
 
